@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Anonna ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(180deg, #ffb6c1, #ff7a7a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      color: white;
+      padding: 20px;
+    }
+
+    .heart {
+      font-size: 100px;
+      animation: beat 1s infinite;
+      cursor: pointer;
+    }
+
+    @keyframes beat {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .text {
+      display: none;
+      margin-top: 20px;
+      animation: fadeIn 2s forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .floating {
+      position: absolute;
+      bottom: -50px;
+      font-size: 24px;
+      animation: floatUp 6s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <audio id="bgMusic" loop>
+    <source src="https://dl.dropboxusercontent.com/scl/fi/0y1w6n0y5c2y3xk2l0t8a/wannabeyours.mp3?rlkey=demo" type="audio/mpeg">
+  </audio>
+
+  <div class="container">
+    <div class="heart" onclick="startLove()">❤️</div>
+    <h2>Tap to start 💖</h2>
+
+    <div class="text" id="loveText">
+      <h1>Anonna 💕</h1>
+      <p>
+        Ami chai amader relation jeno lifetime thake 🤍<br><br>
+        Tumi amar shobcheye boro strength, shobcheye sundor shopno 🌸<br><br>
+        <b>Ami tmk onk onk onk vhalobasi bow 💋</b><br><br>
+        <i>tmr jamai tmk onk vhalobashe 🥰</i><br><br>
+        — Created by Arittra ❤️
+      </p>
+    </div>
+  </div>
+
+  <script>
+    function startLove() {
+      document.getElementById("loveText").style.display = "block";
+      document.getElementById("bgMusic").play();
+      createHearts();
+    }
+
+    function createHearts() {
+      setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "floating";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.innerText = "❤️";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 6000);
+      }, 400);
+    }
+  </script>
+
+</body>
+</html>
